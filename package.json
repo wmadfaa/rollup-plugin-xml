@@ -15,7 +15,8 @@
   "scripts": {
     "build": "rollup -c",
     "prebuild": "del-cli dist",
-    "prepare": "if [ ! -d 'dist' ]; then pnpm build; fi"
+    "prepare": "if [ ! -d 'dist' ]; then pnpm build; fi",
+    "test:ts": "tsc types/index.d.ts test/types.ts --noEmit"
   },
   "files": [
     "dist",
