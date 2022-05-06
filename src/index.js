@@ -1,7 +1,7 @@
 import { createFilter, dataToEsm } from "@rollup/pluginutils";
 import { parseStringPromise } from "xml2js";
 
-export default function xml(options = {}) {
+function xml(options = {}) {
   const filter = createFilter(options.include, options.exclude);
 
   return {
@@ -24,10 +24,12 @@ export default function xml(options = {}) {
         };
       } catch (err) {
         const message = "Could not parse XML file";
-        const position = parseInt(/[\d]/.exec(err.message)[0], 10);
+        const position = parseInt(/\d/.exec(err.message)[0], 10);
         this.warn({ message, id, position });
         return null;
       }
     },
   };
 }
+
+export default xml;
