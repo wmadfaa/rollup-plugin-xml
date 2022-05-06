@@ -7,9 +7,9 @@
 Using npm:
 
 ```console
-npm install git+https://github.com/wmadfaa/rollup-plugin-xml2js.git#v1.0.0 --save-dev
+npm install git+https://github.com/wmadfaa/rollup-plugin-xml.git#v1.0.0 --save-dev
 # or
-yarn add -D git+https://github.com/wmadfaa/rollup-plugin-xml2js.git#v1.0.0
+yarn add -D git+https://github.com/wmadfaa/rollup-plugin-xml.git#v1.0.0
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ yarn add -D git+https://github.com/wmadfaa/rollup-plugin-xml2js.git#v1.0.0
 Create a `rollup.config.js` [configuration file](https://www.rollupjs.org/guide/en/#configuration-files) and import the plugin:
 
 ```js
-import xml from "rollup-plugin-xml2js";
+import xml from "rollup-plugin-xml";
 
 export default {
   input: "src/index.js",
@@ -41,6 +41,13 @@ console.log(`running version ${data.version}`);
 
 ## Options
 
+### `compact`
+
+Type: `Boolean`<br>
+Default: `false`
+
+If `true`, instructs the plugin to ignore `indent` and generates the smallest code.
+
 ### `exclude`
 
 Type: `String` | `Array[...String]`<br>
@@ -54,6 +61,34 @@ Type: `String` | `Array[...String]`<br>
 Default: `null`
 
 A [minimatch pattern](https://github.com/isaacs/minimatch), or array of patterns, which specifies the files in the build the plugin should operate on. By default all files are targeted.
+
+### `indent`
+
+Type: `String`<br>
+Default: `'\t'`
+
+Specifies the indentation for the generated default export.
+
+### `namedExports`
+
+Type: `Boolean`<br>
+Default: `true`
+
+If `true`, instructs the plugin to generate a named export for every node of the XML tree.
+
+### `preferConst`
+
+Type: `Boolean`<br>
+Default: `false`
+
+If `true`, instructs the plugin to declare properties as variables, using either `var` or `const`. This pertains to tree-shaking.
+
+### `parser`
+
+Type: `ParserOptions`<br>
+Default: `{}`
+
+[node-xml2js](https://github.com/Leonidas-from-XIV/node-xml2js#options) parser options.
 
 ## Meta
 
