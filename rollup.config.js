@@ -1,15 +1,15 @@
-import buble from '@rollup/plugin-buble';
+import typescript from "@rollup/plugin-typescript";
 
-const pkg = require('./package.json');
+const pkg = require("./package.json");
 
 const external = Object.keys(pkg.dependencies);
 
 export default {
-    input: 'src/index.js',
-    output: [
-        { file: pkg.main, format: 'cjs', sourcemap: true, exports: 'auto' },
-        { file: pkg.module, format: 'es', sourcemap: true }
-    ],
-    plugins: [buble()],
-    external
+  input: "src/index.js",
+  output: [
+    { file: pkg.main, format: "cjs", sourcemap: true, exports: "auto" },
+    { file: pkg.module, format: "es", sourcemap: true },
+  ],
+  plugins: [typescript()],
+  external,
 };
